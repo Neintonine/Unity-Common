@@ -1,8 +1,13 @@
 {
   "name": "com.iedsoftworks.common",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Some common script I usually use in games",
   "displayName": "Common Scripts",
   "unity": "2020.3",
+  "author": {
+    "name": "",
+    "email": "",
+    "url": ""
+  },
   "hideInEditor": true
 }
