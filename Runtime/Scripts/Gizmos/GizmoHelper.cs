@@ -2,7 +2,7 @@
 
 namespace Common.Runtime.Gizmos
 {
-    public static class GizmoHelper
+    public static class GizmoObjects
     {
         public static void DrawCircle(float radius = 1, Vector3? center = null, int secments = 16)
         {
@@ -23,5 +23,25 @@ namespace Common.Runtime.Gizmos
                 last = current;
             }
         }
+        public static void DrawArrow(Vector3 pos, Vector3 direction, float arrowHeadLength = 0.25f, float arrowHeadAngle = 20.0f)
+        {
+            UnityEngine.Gizmos.DrawRay(pos, direction);
+       
+            Vector3 right = Quaternion.LookRotation(direction) * Quaternion.Euler(0,180+arrowHeadAngle,0) * new Vector3(0,0,1);
+            Vector3 left = Quaternion.LookRotation(direction) * Quaternion.Euler(0,180-arrowHeadAngle,0) * new Vector3(0,0,1);
+            UnityEngine.Gizmos.DrawRay(pos + direction, right * arrowHeadLength);
+            UnityEngine.Gizmos.DrawRay(pos + direction, left * arrowHeadLength);
+        }
+        public static void DrawArrow(Vector3 pos, Vector3 direction, Color color, float arrowHeadLength = 0.25f, float arrowHeadAngle = 20.0f)
+        {
+            UnityEngine.Gizmos.color = color;
+            UnityEngine.Gizmos.DrawRay(pos, direction);
+       
+            Vector3 right = Quaternion.LookRotation(direction) * Quaternion.Euler(0,180+arrowHeadAngle,0) * new Vector3(0,0,1);
+            Vector3 left = Quaternion.LookRotation(direction) * Quaternion.Euler(0,180-arrowHeadAngle,0) * new Vector3(0,0,1);
+            UnityEngine.Gizmos.DrawRay(pos + direction, right * arrowHeadLength);
+            UnityEngine.Gizmos.DrawRay(pos + direction, left * arrowHeadLength);
+        }
+        
     }
 }
