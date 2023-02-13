@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Common.Runtime.Extensions;
 using Object = UnityEngine.Object;
 
 namespace Common.Runtime.NamingConvention
