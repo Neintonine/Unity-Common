@@ -4,6 +4,10 @@ namespace Common.Runtime.Gizmos
 {
     public static class GizmoObjects
     {
+        private static readonly Color AxisXColor = Color.red;
+        private static readonly Color AxisYColor = Color.green;
+        private static readonly Color AxisZColor = Color.blue;
+        
         public static void DrawCircle(float radius = 1, Vector3? center = null, int secments = 16)
         {
             float end = 2 * Mathf.PI;
@@ -42,6 +46,26 @@ namespace Common.Runtime.Gizmos
             UnityEngine.Gizmos.DrawRay(pos + direction, right * arrowHeadLength);
             UnityEngine.Gizmos.DrawRay(pos + direction, left * arrowHeadLength);
         }
+
+        public static void DrawAxisHelper(Vector3? position = null, Quaternion? rotation = null, Vector3? scale = null)
+        {
+            Matrix4x4 prevMatrix = UnityEngine.Gizmos.matrix;
+            UnityEngine.Gizmos.matrix = Matrix4x4.TRS(position.GetValueOrDefault(Vector3.zero), rotation.GetValueOrDefault(Quaternion.identity),
+                scale.GetValueOrDefault(Vector3.zero));
+
+            DrawAxisHelper();
+
+            UnityEngine.Gizmos.matrix = prevMatrix;
+        }
         
+        public static void DrawAxisHelper()
+        {
+            UnityEngine.Gizmos.color = AxisXColor;
+            UnityEngine.Gizmos.DrawLine(Vector3.left, Vector3.right);
+            UnityEngine.Gizmos.color = AxisYColor;
+            UnityEngine.Gizmos.DrawLine(Vector3.down, Vector3.up);
+            UnityEngine.Gizmos.color = AxisZColor;
+            UnityEngine.Gizmos.DrawLine(Vector3.back, Vector3.forward);
+        }
     }
 }
