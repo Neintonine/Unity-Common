@@ -10,11 +10,16 @@ namespace Common.Runtime.Gizmos
         
         public static void DrawCircle(float radius = 1, Vector3? center = null, int secments = 16)
         {
-            float end = 2 * Mathf.PI;
-            float steps = end / secments;
+            DrawArc(radius, Mathf.PI*2, true, center, secments);
+        }
+
+        public static void DrawArc(float radius = 1, float arc = Mathf.PI / 2, bool centered = true, Vector3? center = null,
+            int secments = 16)
+        {
+            float steps = arc / secments;
 
             Vector3? last = null;
-            for (float x = 0; x < end + steps; x += steps)
+            for (float x = 0; x < arc + steps; x += steps)
             {
                 Vector3 current = new Vector3(Mathf.Sin(x), Mathf.Cos(x)) * radius;
                 current += center.GetValueOrDefault(Vector3.zero);
@@ -27,6 +32,7 @@ namespace Common.Runtime.Gizmos
                 last = current;
             }
         }
+        
         public static void DrawArrow(Vector3 pos, Vector3 direction, float arrowHeadLength = 0.25f, float arrowHeadAngle = 20.0f)
         {
             UnityEngine.Gizmos.DrawRay(pos, direction);
