@@ -55,15 +55,19 @@ namespace Common.Runtime.Gizmos
 
         public static void DrawAxisHelper(Vector3? position = null, Quaternion? rotation = null, Vector3? scale = null)
         {
+            DrawAxisHelper(Matrix4x4.TRS(position.GetValueOrDefault(Vector3.zero), rotation.GetValueOrDefault(Quaternion.identity),
+                scale.GetValueOrDefault(Vector3.zero)));
+        }
+
+        public static void DrawAxisHelper(Matrix4x4 matrix)
+        {
             Matrix4x4 prevMatrix = UnityEngine.Gizmos.matrix;
-            UnityEngine.Gizmos.matrix = Matrix4x4.TRS(position.GetValueOrDefault(Vector3.zero), rotation.GetValueOrDefault(Quaternion.identity),
-                scale.GetValueOrDefault(Vector3.zero));
+            UnityEngine.Gizmos.matrix = matrix;
 
             DrawAxisHelper();
 
             UnityEngine.Gizmos.matrix = prevMatrix;
         }
-        
         public static void DrawAxisHelper()
         {
             UnityEngine.Gizmos.color = AxisXColor;
