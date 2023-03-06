@@ -3,7 +3,7 @@ using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace Common.Editor
+namespace Common.Editor.EditorExtensions
 {
     public static class EditorGUIExt
     {

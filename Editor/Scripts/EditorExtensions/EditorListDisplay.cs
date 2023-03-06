@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-namespace Common.Editor
+namespace Common.Editor.EditorExtensions
 {
     public class EditorListDisplay
     {

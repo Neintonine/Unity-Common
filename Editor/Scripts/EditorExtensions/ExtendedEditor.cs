@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEditor;
 
-namespace Common.Editor
+namespace Common.Editor.EditorExtensions
 {
     public abstract class ExtendedEditor : UnityEditor.Editor
     {
