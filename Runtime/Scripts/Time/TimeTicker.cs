@@ -2,6 +2,7 @@ using UnityEngine;
 
 namespace Common.Runtime.Time
 {
+    [AddComponentMenu("_SYSTEM/Time/TimeTicker")]
     public class TimeTicker : AutoStaticMonoBehaviour<TimeTicker>
     {
         
