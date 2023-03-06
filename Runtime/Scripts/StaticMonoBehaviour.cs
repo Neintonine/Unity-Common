@@ -7,7 +7,6 @@ namespace Common.Runtime
     {
         public static T Instance => _instance;
 
-        public bool AutoSpawn { get; protected set; } = false;
         protected static T _instance;
         public static bool IsUsable => _instance;
         
@@ -25,6 +24,8 @@ namespace Common.Runtime
     public class AutoStaticMonoBehaviour<T> : StaticMonoBehaviour<T>
         where T : MonoBehaviour
     {
+        private static GameObject _staticGameObject;
+        
         public new static T Instance
         {
             get
@@ -39,7 +40,13 @@ namespace Common.Runtime
 
         public static void Create()
         {
-            new GameObject($"_{typeof(T).Name}", typeof(T));
+            if (!_staticGameObject)
+            {
+                _staticGameObject = new GameObject("_StaticComponents", typeof(T));
+                return;
+            }
+
+            _staticGameObject.AddComponent<T>();
         }
     }
 }
