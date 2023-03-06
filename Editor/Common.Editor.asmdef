@@ -1,7 +1,7 @@
 {
     "name": "Common.Editor",
     "rootNamespace": "",
-    "references": [],
+    "references": ["GUID:ca1a1a09da8d78548891369e94969f1b"],
     "includePlatforms": [
         "Editor"
     ],
