@@ -1,13 +1,12 @@
 {
   "name": "com.iedsoftworks.common",
-  "version": "1.0.2",
-  "description": "Some common script I usually use in games",
-  "displayName": "Common Scripts",
+  "version": "1.0.3",
   "unity": "2020.3",
+  "displayName": "Common Scripts",
+  "description": "Some common script I usually use in games",
   "author": {
-    "name": "",
-    "email": "",
-    "url": ""
+    "name": "iedSoftworks",
+    "email": "michel.fedde@gmail.com"
   },
   "hideInEditor": true
 }

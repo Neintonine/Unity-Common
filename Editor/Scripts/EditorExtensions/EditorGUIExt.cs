@@ -91,7 +91,7 @@ namespace Common.Editor.EditorExtensions
 
         public static void Horizontal(Action<Rect> content, GUIStyle style = null, params GUILayoutOption[] options)
         {
-            content(EditorGUILayout.BeginHorizontal(style, options));
+            content(EditorGUILayout.BeginHorizontal(style ?? GUIStyle.none, options));
             EditorGUILayout.EndHorizontal();
         }
         public static void Vertical(Action<Rect> content, GUIStyle style = null, params GUILayoutOption[] options)
