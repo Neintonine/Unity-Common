@@ -1,8 +1,6 @@
 ﻿using Common.Editor.EditorExtensions;
 using Common.Runtime.Animation;
-using JetBrains.Annotations;
 using UnityEditor;
-using UnityEngine;
 
 namespace Common.Editor.Animation
 {
@@ -57,13 +55,13 @@ namespace Common.Editor.Animation
         private void RenderTransformOptions(
             string label,
             string add,
-            string name,
+            string objectName,
             string useWorld = "", 
             string useEuler = ""
         )
         {
             SerializedProperty addProp = this.GetProperty(add);
-            SerializedProperty nameProp = this.GetProperty(name);
+            SerializedProperty nameProp = this.GetProperty(objectName);
 
             addProp.boolValue = EditorGUILayout.ToggleLeft(label, addProp.boolValue);
             if (!addProp.boolValue)
@@ -76,7 +74,7 @@ namespace Common.Editor.Animation
             
             bool hasUseWorld = !string.IsNullOrEmpty(useWorld);
             bool hasUseEuler = !string.IsNullOrEmpty(useEuler);
-            EditorGUIExt.Horizontal((Rect obj) =>
+            EditorGUIExt.Horizontal(_ =>
             {
                 if (hasUseEuler)
                 {

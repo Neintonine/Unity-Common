@@ -1,6 +1,4 @@
-﻿using System;
-using UnityEngine;
-using UnityEngine.Serialization;
+﻿using UnityEngine;
 
 namespace Common.Runtime.Animation
 {
@@ -36,12 +34,13 @@ namespace Common.Runtime.Animation
         private void Awake()
         {
             this._arguments = this.GetComponent<AnimatorArguments>();
-            if (!this._transform)
+            if (this._transform)
             {
-                Debug.LogError("Setting Transformation values to animator arguments failed: Transform is not set.", this);
-                enabled = false;
-                
+                return;
             }
+
+            Debug.LogError("Setting Transformation values to animator arguments failed: Transform is not set.", this);
+            this.enabled = false;
         }
 
         private void Start()
@@ -68,7 +67,7 @@ namespace Common.Runtime.Animation
 
         private void SetForward()
         {
-            if (this._addForward)
+            if (!this._addForward)
             {
                 return;
             }
@@ -78,7 +77,7 @@ namespace Common.Runtime.Animation
         
         private void SetRight()
         {
-            if (this._addRight)
+            if (!this._addRight)
             {
                 return;
             }
@@ -88,7 +87,7 @@ namespace Common.Runtime.Animation
         
         private void SetUp()
         {
-            if (this._addUp)
+            if (!this._addUp)
             {
                 return;
             }
