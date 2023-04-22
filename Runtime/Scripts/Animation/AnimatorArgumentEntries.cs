@@ -8,7 +8,7 @@ namespace Common.Runtime.Animation
     public sealed class AnimatorArgumentEntries : MonoBehaviour
     {
         public List<AnimatorArgumentDataEntry> Entries => this._entries;
-        [SerializeField] private List<AnimatorArgumentDataEntry> _entries;
+        [SerializeField] private List<AnimatorArgumentDataEntry> _entries = new List<AnimatorArgumentDataEntry>();
 
         private AnimatorArguments _arguments;
 
