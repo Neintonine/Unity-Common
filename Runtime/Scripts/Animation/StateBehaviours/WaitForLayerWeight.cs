@@ -13,22 +13,26 @@ namespace Common.Runtime.Animation.StateBehaviours
         public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo,
             int layerIndex)
         {
-            _parameterID = Animator.StringToHash(_parameterTriggerName);
-            if (animator.parameters.All(a => a.nameHash != _parameterID))
+            this._parameterID = Animator.StringToHash(this._parameterTriggerName);
+            if (animator.parameters.Any(a => a.nameHash == this._parameterID))
             {
-                Debug.LogError($"Animator doesn't have a parameter called '{_parameterTriggerName}'");
-                Destroy(this);
+                return;
             }
+
+            Debug.LogError($"{nameof(Animator)} doesn't have a parameter called '{this._parameterTriggerName}'");
+            Object.Destroy(this);
         }
 
         public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo,
             int layerIndex)
         {
-            if (animator.GetLayerWeight(layerIndex) < _minLayerWeight)
+            if (!(animator.GetLayerWeight(layerIndex) < this._minLayerWeight))
             {
-                animator.SetTrigger(_parameterID);
-                Destroy(this);
+                return;
             }
+
+            animator.SetTrigger(this._parameterID);
+            Object.Destroy(this);
         }
     }
 }

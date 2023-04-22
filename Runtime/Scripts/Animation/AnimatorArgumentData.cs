@@ -1,5 +1,6 @@
 ﻿using System;
 using Common.Runtime.Time;
+using JetBrains.Annotations;
 using UnityEngine;
 
 namespace Common.Runtime.Animation
@@ -29,7 +30,12 @@ namespace Common.Runtime.Animation
     [Serializable]
     public sealed class AnimatorArgumentDataEntry : AnimatorArgumentData
     {
-        public UnityEngine.Object Data => this._data;
+        public UnityEngine.Object Data
+        {
+            get => this._data;
+            set => this._data = value;
+        }
+
         [SerializeField] private UnityEngine.Object _data;
 
         public AnimatorArgumentDataEntry(string name, UnityEngine.Object obj) : base(name, null)
@@ -67,8 +73,6 @@ namespace Common.Runtime.Animation
                 case Vector4 value:
                     this.Object = Vector4.Lerp((Vector4)this.Object, value, speed);
                     return;
-                default:
-                    break;
             }
         }
     }

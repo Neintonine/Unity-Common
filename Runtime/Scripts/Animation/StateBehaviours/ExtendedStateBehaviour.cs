@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using JetBrains.Annotations;
+using UnityEngine;
 
 namespace Common.Runtime.Animation.StateBehaviours
 {
@@ -12,7 +13,7 @@ namespace Common.Runtime.Animation.StateBehaviours
             int layerIndex
         )
         {
-            Arguments = animator.GetComponent<AnimatorArguments>();
+            this.Arguments = animator.GetComponent<AnimatorArguments>();
         }
 
         protected bool ShouldRun(Animator animator, int layerIndex)

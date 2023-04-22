@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Common.Runtime.Animation.StateBehaviours
 {
@@ -14,8 +13,8 @@ namespace Common.Runtime.Animation.StateBehaviours
         
         [SerializeField] private string _functionName;
         [SerializeField] private SendMessageStage _sendStage = SendMessageStage.Enter;
-        [SerializeField] private bool _requireReciever = false;
-        [SerializeField] private bool _upward = false;
+        [SerializeField] private bool _requireReciever;
+        [SerializeField] private bool _upward;
         private bool _triggered = false;
         
         public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
