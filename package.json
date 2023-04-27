@@ -1,6 +1,6 @@
 {
   "name": "com.iedsoftworks.common",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "unity": "2020.3",
   "displayName": "Common Scripts",
   "description": "Some common script I usually use in games",
