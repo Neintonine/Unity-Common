@@ -8,6 +8,14 @@ namespace Common.Runtime.SceneManagement
         internal static List<Action<LoadingEventContext>> _loadingActions = new List<Action<LoadingEventContext>>();
         internal static List<Action> _startActions = new List<Action>();
 
+        internal static void TriggerStartActions()
+        {
+            foreach (Action action in LoadingEvent._startActions)
+            {
+                action.Invoke();
+            }
+        } 
+        
         public static void RegisterStartAction(Action action)
         {
             LoadingEvent._startActions.Add(action);

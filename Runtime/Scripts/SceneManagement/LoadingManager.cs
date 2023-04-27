@@ -63,6 +63,8 @@ namespace Common.Runtime.SceneManagement
             await this.HandleSceneLoadingProcess(loadingProcesses);
             await this.HandleLoadingEvents();
             
+            LoadingEvent.TriggerStartActions();
+            
             this._loadingScreen.Hide();
         }
 
